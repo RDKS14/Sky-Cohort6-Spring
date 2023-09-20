@@ -1,5 +1,11 @@
 package com.Sky.Vehiclesdemo.domain;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class Vehicle {
 
     private String name;
@@ -9,31 +15,25 @@ public class Vehicle {
 
     private int doors;
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    public Vehicle(String name, int age, String brand, int wheels, int doors) {
+    public Vehicle(String name, int age, String brand, int wheels, int doors, int id) {
         super();
         this.name = name;
         this.age = age;
         this.brand = brand;
         this.wheels = wheels;
         this.doors = doors;
+        this.id = id;
 
     }
 
     public Vehicle(){
         super();
     }
-    public String toString() {
-        return "Vehicle{" +
-                "name='" + name + '\'' +
-                ", age=" + age +
-                ", brand=" + brand +
-                ", number of wheels =" + wheels +
-                ", number of doors=" + doors +
-                " ID " + id +
-                '}';
-    }
+
     public String getName() {
         return name;
     }
@@ -73,5 +73,10 @@ public class Vehicle {
     public void setDoors(int doors) {
         this.doors = doors;
     }
-
+    public int getID() {
+        return id;
+    }
+    public void setID(int id) {
+        this.id = id;
+    }
 }
