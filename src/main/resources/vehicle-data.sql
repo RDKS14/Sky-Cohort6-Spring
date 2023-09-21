@@ -1,4 +1,4 @@
 INSERT INTO `vehicle`
-    (`name`, `age`, `brand`,`wheels`,`doors`,`id`)
+    (`name`, `age`, `brand`,`wheels`,`doors`)
 VALUES
-    ('Arona', 2, 'SEAT', 4, 4, 1), ('Ibiza', 2, 'SEAT', 4, 4, 2), ('ATECA', 2, 'SEAT', 4, 4, 3);
+    ('Arona', 2, 'SEAT', 4, 4), ('Ibiza', 2, 'SEAT', 4, 4), ('ATECA', 2, 'SEAT', 4, 4);

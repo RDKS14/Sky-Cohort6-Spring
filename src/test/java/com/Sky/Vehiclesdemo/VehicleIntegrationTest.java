@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.RequestBuilder;
@@ -23,6 +24,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @AutoConfigureMockMvc
 @Sql(scripts = {"classpath:vehicle-schema.sql", "classpath:vehicle-data.sql"}, executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD)
+@ActiveProfiles("dev")
 public class VehicleIntegrationTest {
 
     @Autowired
@@ -53,9 +55,9 @@ public class VehicleIntegrationTest {
 
     @Test
     void testCreate2() throws Exception {
-        String reqBody = this.mapper.writeValueAsString(new Vehicle("Urus", 4, "Lamborghini", 4, 2, 7));
+        String reqBody = this.mapper.writeValueAsString(new Vehicle("Urus", 4, "Lamborghini", 4, 2, 5));
 
-        String resBody = this.mapper.writeValueAsString(new Vehicle("Urus", 4, "Lamborghini", 4, 2, 7));
+        String resBody = this.mapper.writeValueAsString(new Vehicle("Urus", 4, "Lamborghini", 4, 2, 5));
 
         mvc.perform(post("/create").content(reqBody).contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isCreated()).andExpect(content().json(resBody));
@@ -93,7 +95,7 @@ public class VehicleIntegrationTest {
     }
     @Test
     void testDelete() throws Exception {
-        this.mvc.perform(MockMvcRequestBuilders.delete("/remove/2"))
+        this.mvc.perform(MockMvcRequestBuilders.delete("/remove/3"))
                 .andExpect(MockMvcResultMatchers.status().isOk());
 
     }

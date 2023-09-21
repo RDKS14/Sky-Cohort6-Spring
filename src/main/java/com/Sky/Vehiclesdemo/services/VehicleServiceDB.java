@@ -39,7 +39,7 @@ public class VehicleServiceDB implements VehicleService {
     }
 
     @Override
-    public Vehicle updateVehicle(Integer id, String name, Integer age, String brand, Integer wheels, Integer doors) {
+    public Vehicle updateVehicle(String name, Integer age, String brand, Integer wheels, Integer doors,Integer id) {
         Vehicle vToUpdate = getVehicle(id);
         if (name != null) vToUpdate.setName(name);
         if (age != null) vToUpdate.setAge(age);

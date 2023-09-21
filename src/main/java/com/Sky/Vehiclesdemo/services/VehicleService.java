@@ -12,12 +12,12 @@ public interface VehicleService {
     List<Vehicle> getAll();
 
     Vehicle updateVehicle(
-            Integer id,
             String name,
             Integer age,
             String brand,
             Integer wheels,
-            Integer doors);
+            Integer doors,
+            Integer id);
 
     String removeVehicle(int id);
 

@@ -55,21 +55,21 @@ public class VehicleController {
 
     @PatchMapping("/update")
     public ResponseEntity<Vehicle> updateVehicle(
-            @RequestParam(name = "id", required = false) Integer id,
             @RequestParam(name = "name", required = false) String name,
             @RequestParam(name = "age", required = false) Integer age,
             @RequestParam(name = "brand", required = false) String brand,
             @RequestParam(name = "wheels", required = false) Integer wheels,
-            @RequestParam(name = "doors", required = false) Integer doors
+            @RequestParam(name = "doors", required = false) Integer doors,
+            @RequestParam(name = "id", required = false) Integer id
     ) {
-        System.out.println("ID: " + id);
         System.out.println("NAME: " + name);
         System.out.println("AGE: " + age);
         System.out.println("BRAND: " + brand);
         System.out.println("WHEELS: " + wheels);
         System.out.println("DOORS: " + doors);
+        System.out.println("ID: " + id);
 
-        Vehicle updated = this.service.updateVehicle(id, name, age, brand, wheels, doors);
+        Vehicle updated = this.service.updateVehicle(name, age, brand, wheels, doors, id);
         if (updated == null) return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 
         return ResponseEntity.ok(updated);
